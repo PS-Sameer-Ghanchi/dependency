@@ -4,23 +4,23 @@
     {
         Guid id { get; }
     }
-    public interface AddTransientOperation : Idependency
+    public interface OperationTransient : Idependency
     {
 
     }
-    public interface AddScopeOperation : Idependency
+    public interface OperationScoped : Idependency
     {
 
     }
-    public interface AddSingleToneOperation : Idependency
+    public interface OperationSingleTone : Idependency
     {
 
     }
-    public interface AddSingleToneInstance : Idependency
+    public interface OperationSingleToneInstance : Idependency
     {
     
     }
-    public class Dependency :AddTransientOperation ,AddSingleToneOperation ,AddScopeOperation,AddSingleToneInstance
+    public class Dependency : OperationTransient, OperationSingleTone, OperationScoped, OperationSingleToneInstance
     {
         Guid _id;
 

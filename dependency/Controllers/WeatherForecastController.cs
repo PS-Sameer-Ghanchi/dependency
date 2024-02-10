@@ -7,24 +7,24 @@ namespace dependency.Controllers
     public class WeatherForecastController : ControllerBase
     {
 
-        private readonly AddTransientOperation _AddTransient;
-        private readonly AddScopeOperation _AddScope;
-        private readonly AddSingleToneOperation _AddSingleTone;
-        private readonly AddSingleToneInstance _addSingleToneInstance;
-        private readonly Class1 _Class1;
-        private readonly Class2 _Class2;
+        private readonly OperationTransient OperationTransient;
+        private readonly OperationScoped _OperationScoped;
+        private readonly OperationSingleTone _OperationSingleTone;
+        private readonly OperationSingleToneInstance _OperationSingleToneInstance;
+        private readonly DependencyClass1 _DependencyClass1;
+        private readonly DependencyClass2 _DependencyClass2;
 
 
        
-        public WeatherForecastController(AddTransientOperation AddTransient, AddScopeOperation AddScope, AddSingleToneOperation AddSingleTone,Class1 Class1, Class2 Class2, AddSingleToneInstance OneIstance)
+        public WeatherForecastController(OperationTransient AddTransient, OperationScoped AddScope, OperationSingleTone AddSingleTone, DependencyClass1 Class1, DependencyClass2 Class2, OperationSingleToneInstance OneIstance)
         {
-           
-            _AddTransient= AddTransient;
-            _AddScope=AddScope;
-            _AddSingleTone=AddSingleTone;
-            _Class1 = Class1;
-            _Class2 = Class2;
-            _addSingleToneInstance = OneIstance;
+
+            OperationTransient = AddTransient;
+            _OperationScoped = AddScope;
+            _OperationSingleTone = AddSingleTone;
+            _DependencyClass1 = Class1;
+            _DependencyClass2 = Class2;
+            _OperationSingleToneInstance = OneIstance;
         }
        
         [HttpGet("api1")]
@@ -32,9 +32,9 @@ namespace dependency.Controllers
            
 
             Console.WriteLine();
-            _Class1.get();
+            _DependencyClass1.get();
             Console.WriteLine();
-            _Class2.get();
+            _DependencyClass2.get();
             return;
         }
     }

@@ -7,15 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddTransient<AddTransientOperation, Dependency>();
-builder.Services.AddScoped<AddScopeOperation, Dependency>();
-builder.Services.AddSingleton<AddSingleToneOperation, Dependency>();
-builder.Services.AddScoped<AddSingleToneInstance,Dependency>(a => new Dependency(Guid.Empty));
+builder.Services.AddTransient<OperationTransient, Dependency>();
+builder.Services.AddScoped<OperationScoped, Dependency>();
+builder.Services.AddSingleton<OperationSingleTone, Dependency>();
+builder.Services.AddScoped<OperationSingleToneInstance, Dependency>(a => new Dependency(Guid.Empty));
 
 
 
-builder.Services.AddScoped<Class1, Class1>();
-builder.Services.AddScoped<Class2,Class2>();
+builder.Services.AddScoped<DependencyClass1, DependencyClass1>();
+builder.Services.AddScoped<DependencyClass2, DependencyClass2>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
